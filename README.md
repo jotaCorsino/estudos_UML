@@ -91,3 +91,71 @@ Criada por Grady Booch, James Rumbaugh e Ivar Jacobson, a UML foi adotada pela O
 - Reutilize elementos comuns para manter a coesão e modularidade do sistema.
 - Mantenha os diagramas atualizados conforme o desenvolvimento do projeto evolui.
 - Separe as responsabilidades corretamente nos diagramas para evitar sobrecarga de informações em um único elemento.
+
+# Casos de Uso em UML
+
+O Diagrama de Casos de Uso é utilizado para representar as interações entre atores e o sistema. Ele é fundamental para capturar requisitos funcionais e descrever como um usuário (ou outro sistema) interage com a aplicação.
+
+## Principais Elementos:
+
+- **Atores**: Representam entidades externas (usuários, sistemas ou dispositivos) que interagem com o sistema.
+- **Casos de Uso**: Representam funcionalidades do sistema.
+- **Relacionamentos**: Definem como os casos de uso se conectam entre si.
+
+## Relacionamentos Específicos Entre Casos de Uso
+
+Os relacionamentos permitem evitar redundância, reutilizar funcionalidades e organizar melhor a modelagem.
+
+### 🔹 Include («include»)
+
+O relacionamento «include» indica que um caso de uso sempre invoca outro caso de uso como parte de seu fluxo.
+
+**Uso comum:**
+- Quando uma funcionalidade é obrigatória e compartilhada por vários casos de uso.
+- Quando queremos evitar duplicação de um processo que se repete.
+
+**Sintaxe:**
+- O caso de uso incluído deve ser representado por uma seta pontilhada com a estereotipação «include».
+
+**Exemplo:**
+- Um "Fazer Login" pode ser incluído em vários casos de uso, como "Realizar Compra" e "Gerenciar Perfil", pois ambos exigem que o usuário esteja autenticado.
+
+💡 **Analogia**: Pense no "include" como uma função chamada dentro de um programa: ele sempre será executado quando necessário.
+
+### 🔹 Extend («extend»)
+
+O relacionamento «extend» indica que um caso de uso pode adicionar um comportamento opcional a outro caso de uso.
+
+**Uso comum:**
+- Quando temos funcionalidades que podem ou não acontecer dependendo de condições específicas.
+- Para separar responsabilidades, tornando o modelo mais modular.
+
+**Sintaxe:**
+- O caso de uso estendido deve ser representado por uma seta pontilhada com a estereotipação «extend».
+- O ponto de extensão pode ser especificado para indicar em que momento a extensão pode ocorrer.
+
+**Exemplo:**
+- No caso de "Finalizar Compra", pode haver uma extensão chamada "Aplicar Cupom de Desconto", que só ocorre se o usuário inserir um cupom válido.
+
+💡 **Analogia**: O "extend" é como um recurso extra que pode ou não ser ativado, como um modo turbo em um carro.
+
+### 🔹 Generalização (Herança Entre Casos de Uso)
+
+A generalização é um relacionamento hierárquico onde um caso de uso herda características de outro caso de uso.
+
+**Uso comum:**
+- Quando temos um caso de uso genérico que pode ser especializado em casos mais específicos.
+- Para reduzir repetição e aumentar a organização do modelo.
+
+**Exemplo:**
+- Um caso de uso "Fazer Pagamento" pode ter dois casos especializados: "Pagar com Cartão" e "Pagar com Boleto".
+
+💡 **Analogia**: Assim como uma subclasse herda métodos de uma superclasse na programação orientada a objetos, um caso de uso filho herda as funcionalidades do pai.
+
+## Comparação Entre "include", "extend" e "generalização"
+
+| Relação         | Ocorre Sempre? | Direção da Seta           | Uso                                                                 |
+|-----------------|----------------|---------------------------|---------------------------------------------------------------------|
+| «include»      | ✅ Sim         | Para o caso de uso incluído | Quando um caso de uso sempre depende de outro                       |
+| «extend»       | ❌ Não (opcional) | Para o caso de uso base    | Quando um comportamento é opcional e condicional                   |
+| Generalização  | ✅ Sim (se for chamado) | Para o caso de uso pai     | Quando há herança de funcionalidades                               |
